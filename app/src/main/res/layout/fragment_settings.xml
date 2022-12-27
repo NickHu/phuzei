@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/menu_item_padding"
             android:layout_marginRight="@dimen/menu_item_padding"
-            android:text="pesiran@gmail.com"
+            android:text="@string/support_email"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
             tools:ignore="HardcodedText" />
 

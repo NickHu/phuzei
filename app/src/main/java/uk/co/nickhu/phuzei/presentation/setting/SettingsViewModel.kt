@@ -5,6 +5,7 @@ import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import uk.co.nickhu.phuzei.R
 import uk.co.nickhu.phuzei.data.pref.AppPreferences
 import uk.co.nickhu.phuzei.util.SingleLiveEvent
 import javax.inject.Inject
@@ -61,7 +62,7 @@ class SettingsViewModel @Inject constructor(
 
     fun onContact() {
         Intent(Intent.ACTION_SENDTO, "mailto:".toUri()).apply {
-            putExtra(Intent.EXTRA_EMAIL, arrayOf("pesiran@gmail.com"))
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(R.string.support_email))
             putExtra(Intent.EXTRA_SUBJECT, "Phuzei")
         }.also {
             _intentObservable.value = it

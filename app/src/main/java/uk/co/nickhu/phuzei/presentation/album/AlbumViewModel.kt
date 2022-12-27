@@ -3,14 +3,14 @@ package uk.co.nickhu.phuzei.presentation.album
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.Single
+import io.reactivex.disposables.CompositeDisposable
 import uk.co.nickhu.phuzei.data.model.Album
 import uk.co.nickhu.phuzei.data.model.BaseAlbumResponse
 import uk.co.nickhu.phuzei.data.pref.AppPreferences
 import uk.co.nickhu.phuzei.data.repository.AlbumsRepository
 import uk.co.nickhu.phuzei.util.SingleLiveEvent
 import uk.co.nickhu.phuzei.util.addTo
-import io.reactivex.Single
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 /**

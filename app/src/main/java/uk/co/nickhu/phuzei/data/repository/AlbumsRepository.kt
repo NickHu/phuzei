@@ -1,11 +1,11 @@
 package uk.co.nickhu.phuzei.data.repository
 
+import io.reactivex.Single
 import uk.co.nickhu.phuzei.data.api.AlbumsApi
 import uk.co.nickhu.phuzei.data.model.Album
 import uk.co.nickhu.phuzei.data.model.AlbumsResponse
 import uk.co.nickhu.phuzei.data.model.SharedAlbumsResponse
 import uk.co.nickhu.phuzei.util.applyNetworkSchedulers
-import io.reactivex.Single
 import javax.inject.Inject
 
 /**

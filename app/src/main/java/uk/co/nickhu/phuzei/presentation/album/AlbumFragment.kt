@@ -10,6 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.apps.muzei.api.MuzeiContract
+import com.google.android.material.snackbar.Snackbar
 import uk.co.nickhu.phuzei.App
 import uk.co.nickhu.phuzei.BuildConfig
 import uk.co.nickhu.phuzei.MUZEI_PACKAGE_NAME
@@ -21,8 +23,6 @@ import uk.co.nickhu.phuzei.util.InfiniteScrollListener
 import uk.co.nickhu.phuzei.util.isMuzeiInstalled
 import uk.co.nickhu.phuzei.util.openInPlayStore
 import uk.co.nickhu.phuzei.util.toast
-import com.google.android.apps.muzei.api.MuzeiContract
-import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
 /**

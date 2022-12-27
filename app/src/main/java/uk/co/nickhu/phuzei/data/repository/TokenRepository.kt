@@ -1,9 +1,9 @@
 package uk.co.nickhu.phuzei.data.repository
 
+import io.reactivex.Single
 import uk.co.nickhu.phuzei.data.api.TokenApi
 import uk.co.nickhu.phuzei.data.pref.AppPreferences
 import uk.co.nickhu.phuzei.util.applyNetworkSchedulers
-import io.reactivex.Single
 import javax.inject.Inject
 
 /**

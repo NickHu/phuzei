@@ -3,6 +3,8 @@ package uk.co.nickhu.phuzei.presentation.muzei
 import android.content.Context
 import androidx.core.net.toUri
 import androidx.work.*
+import com.google.android.apps.muzei.api.provider.Artwork
+import com.google.android.apps.muzei.api.provider.ProviderContract
 import uk.co.nickhu.phuzei.App
 import uk.co.nickhu.phuzei.BuildConfig
 import uk.co.nickhu.phuzei.data.model.Media
@@ -10,8 +12,6 @@ import uk.co.nickhu.phuzei.data.model.isImage
 import uk.co.nickhu.phuzei.data.model.largeUrl
 import uk.co.nickhu.phuzei.data.pref.AppPreferences
 import uk.co.nickhu.phuzei.data.repository.PhotosRepository
-import com.google.android.apps.muzei.api.provider.Artwork
-import com.google.android.apps.muzei.api.provider.ProviderContract
 import java.io.IOException
 import javax.inject.Inject
 

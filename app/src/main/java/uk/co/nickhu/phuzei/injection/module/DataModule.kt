@@ -1,6 +1,9 @@
 package uk.co.nickhu.phuzei.injection.module
 
 import android.content.Context
+import dagger.Module
+import dagger.Provides
+import io.reactivex.disposables.CompositeDisposable
 import uk.co.nickhu.phuzei.data.api.AlbumsApi
 import uk.co.nickhu.phuzei.data.api.PhotosApi
 import uk.co.nickhu.phuzei.data.api.TokenApi
@@ -8,9 +11,6 @@ import uk.co.nickhu.phuzei.data.pref.AppPreferences
 import uk.co.nickhu.phuzei.data.repository.AlbumsRepository
 import uk.co.nickhu.phuzei.data.repository.PhotosRepository
 import uk.co.nickhu.phuzei.data.repository.TokenRepository
-import dagger.Module
-import dagger.Provides
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
 
 /**

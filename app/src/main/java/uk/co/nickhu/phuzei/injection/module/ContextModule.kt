@@ -1,11 +1,11 @@
 package uk.co.nickhu.phuzei.injection.module
 
 import android.content.Context
+import dagger.Module
+import dagger.Provides
 import uk.co.nickhu.phuzei.App
 import uk.co.nickhu.phuzei.injection.qualifier.ApplicationContext
 import uk.co.nickhu.phuzei.injection.scope.ApplicationScope
-import dagger.Module
-import dagger.Provides
 
 /**
  * Created by Alireza Afkar on 16/3/2018AD.

@@ -5,11 +5,11 @@ import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import io.reactivex.disposables.CompositeDisposable
+import okhttp3.HttpUrl
 import uk.co.nickhu.phuzei.data.repository.TokenRepository
 import uk.co.nickhu.phuzei.util.SingleLiveEvent
 import uk.co.nickhu.phuzei.util.addTo
-import io.reactivex.disposables.CompositeDisposable
-import okhttp3.HttpUrl
 import javax.inject.Inject
 
 /**

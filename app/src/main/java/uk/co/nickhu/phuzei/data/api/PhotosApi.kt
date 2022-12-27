@@ -1,13 +1,13 @@
 package uk.co.nickhu.phuzei.data.api
 
-import uk.co.nickhu.phuzei.data.model.Search
-import uk.co.nickhu.phuzei.data.model.SearchResponse
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Query
+import uk.co.nickhu.phuzei.data.model.Search
+import uk.co.nickhu.phuzei.data.model.SearchResponse
 
 /**
  * Created by Alireza Afkar on 14/9/2018AD.

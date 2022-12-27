@@ -1,14 +1,5 @@
 package uk.co.nickhu.phuzei.injection.module
 
-import uk.co.nickhu.phuzei.*
-import uk.co.nickhu.phuzei.data.api.AlbumsApi
-import uk.co.nickhu.phuzei.data.api.PhotosApi
-import uk.co.nickhu.phuzei.data.api.TokenApi
-import uk.co.nickhu.phuzei.data.pref.AppPreferences
-import uk.co.nickhu.phuzei.data.pref.token
-import uk.co.nickhu.phuzei.injection.qualifier.AuthorizationInterceptor
-import uk.co.nickhu.phuzei.injection.qualifier.LoggingInterceptor
-import uk.co.nickhu.phuzei.util.TokenAuthenticator
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -20,6 +11,15 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import uk.co.nickhu.phuzei.*
+import uk.co.nickhu.phuzei.data.api.AlbumsApi
+import uk.co.nickhu.phuzei.data.api.PhotosApi
+import uk.co.nickhu.phuzei.data.api.TokenApi
+import uk.co.nickhu.phuzei.data.pref.AppPreferences
+import uk.co.nickhu.phuzei.data.pref.token
+import uk.co.nickhu.phuzei.injection.qualifier.AuthorizationInterceptor
+import uk.co.nickhu.phuzei.injection.qualifier.LoggingInterceptor
+import uk.co.nickhu.phuzei.util.TokenAuthenticator
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 

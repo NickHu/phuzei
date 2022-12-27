@@ -1,5 +1,6 @@
 package uk.co.nickhu.phuzei.injection.component
 
+import dagger.Component
 import uk.co.nickhu.phuzei.injection.module.ContextModule
 import uk.co.nickhu.phuzei.injection.module.DataModule
 import uk.co.nickhu.phuzei.injection.module.NetworkModule
@@ -13,7 +14,6 @@ import uk.co.nickhu.phuzei.presentation.muzei.PhotosWorker
 import uk.co.nickhu.phuzei.presentation.setting.SettingsFragment
 import uk.co.nickhu.phuzei.presentation.splash.SplashActivity
 import uk.co.nickhu.phuzei.util.TokenAuthenticator
-import dagger.Component
 import javax.inject.Singleton
 
 /**

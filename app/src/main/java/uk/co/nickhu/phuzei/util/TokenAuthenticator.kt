@@ -1,5 +1,9 @@
 package uk.co.nickhu.phuzei.util
 
+import com.google.gson.Gson
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 import uk.co.nickhu.phuzei.AUTHORIZATION
 import uk.co.nickhu.phuzei.REFRESH_URL
 import uk.co.nickhu.phuzei.REQUEST_CONTENT_TYPE
@@ -7,10 +11,6 @@ import uk.co.nickhu.phuzei.data.model.Token
 import uk.co.nickhu.phuzei.data.model.TokenRequest
 import uk.co.nickhu.phuzei.data.pref.AppPreferences
 import uk.co.nickhu.phuzei.data.pref.token
-import com.google.gson.Gson
-import okhttp3.*
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody.Companion.toRequestBody
 import javax.inject.Inject
 
 

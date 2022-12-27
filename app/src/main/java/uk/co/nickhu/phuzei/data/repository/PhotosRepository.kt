@@ -1,9 +1,9 @@
 package uk.co.nickhu.phuzei.data.repository
 
+import io.reactivex.Single
 import uk.co.nickhu.phuzei.data.api.PhotosApi
 import uk.co.nickhu.phuzei.data.model.*
 import uk.co.nickhu.phuzei.util.applyNetworkSchedulers
-import io.reactivex.Single
 import java.util.*
 import javax.inject.Inject
 

@@ -6,9 +6,9 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import uk.co.nickhu.phuzei.MUZEI_PACKAGE_NAME
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import uk.co.nickhu.phuzei.MUZEI_PACKAGE_NAME
 
 /**
  * Created by Alireza Afkar on 6/12/2018AD.

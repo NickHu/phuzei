@@ -3,7 +3,6 @@ package uk.co.nickhu.phuzei.presentation.setting
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.radiobutton.MaterialRadioButton
 import uk.co.nickhu.phuzei.databinding.ItemCategoryBinding
 
 /**

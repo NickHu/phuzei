@@ -1,15 +1,14 @@
 package uk.co.nickhu.phuzei.presentation.main
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.squareup.picasso.Picasso
 import uk.co.nickhu.phuzei.R
 import uk.co.nickhu.phuzei.data.model.Album
 import uk.co.nickhu.phuzei.databinding.ItemAlbumBinding
-import com.squareup.picasso.Picasso
 
 /**
  * Created by Alireza Afkar on 16/9/2018AD.

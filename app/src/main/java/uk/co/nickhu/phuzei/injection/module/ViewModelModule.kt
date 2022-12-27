@@ -1,14 +1,14 @@
 package uk.co.nickhu.phuzei.injection.module
 
 import androidx.lifecycle.ViewModel
+import dagger.Binds
+import dagger.Module
+import dagger.multibindings.IntoMap
 import uk.co.nickhu.phuzei.injection.util.ViewModelKey
 import uk.co.nickhu.phuzei.presentation.album.AlbumViewModel
 import uk.co.nickhu.phuzei.presentation.login.LoginViewModel
 import uk.co.nickhu.phuzei.presentation.setting.SettingsViewModel
 import uk.co.nickhu.phuzei.presentation.splash.SplashViewModel
-import dagger.Binds
-import dagger.Module
-import dagger.multibindings.IntoMap
 
 /**
  * Created by Alireza Afkar on 5/21/20.

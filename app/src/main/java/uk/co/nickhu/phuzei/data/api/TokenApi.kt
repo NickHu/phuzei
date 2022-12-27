@@ -1,12 +1,12 @@
 package uk.co.nickhu.phuzei.data.api
 
-import uk.co.nickhu.phuzei.*
-import uk.co.nickhu.phuzei.data.model.Token
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
+import uk.co.nickhu.phuzei.*
+import uk.co.nickhu.phuzei.data.model.Token
 
 /**
  * Created by Alireza Afkar on 14/9/2018AD.

@@ -2,4 +2,4 @@
 -keepattributes LineNumberTable
 -keepattributes *Annotation*,EnclosingMethod,Signature,Exceptions,InnerClasses
 
--keep class uk.co.nickhu.phuzei.data.model.** { *; }
+-keep class hu.nickx.phuzei.data.model.** { *; }

@@ -11,14 +11,14 @@ android {
     }
 
     defaultConfig {
-        applicationId 'uk.co.nickhu.phuzei'
+        applicationId 'hu.nickx.phuzei'
         minSdkVersion 21
         targetSdkVersion 33
         versionCode 220
         versionName '2.2.0'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        def phuzeiAuthorityValue = "uk.co.nickhu.phuzei"
+        def phuzeiAuthorityValue = "hu.nickx.phuzei"
         manifestPlaceholders = [phuzeiAuthority: phuzeiAuthorityValue]
         buildConfigField "String", "PHUZEI_AUTHORITY", "\"${phuzeiAuthorityValue}\""
     }
@@ -45,7 +45,7 @@ android {
             proguardFile "$project.rootDir/app/proguard/app.pro"
         }
     }
-    namespace 'uk.co.nickhu.phuzei'
+    namespace 'hu.nickx.phuzei'
 }
 
 ext {

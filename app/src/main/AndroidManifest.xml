@@ -25,7 +25,7 @@
         </activity>
 
         <activity
-            android:name="uk.co.nickhu.phuzei.presentation.login.LoginActivity"
+            android:name="hu.nickx.phuzei.presentation.login.LoginActivity"
             android:exported="true"
             android:launchMode="singleTask">
 
@@ -35,7 +35,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <data android:scheme="uk.co.nickhu.phuzei" />
+                <data android:scheme="hu.nickx.phuzei" />
             </intent-filter>
         </activity>
 
@@ -52,7 +52,7 @@
             </intent-filter>
             <meta-data
                 android:name="settingsActivity"
-                android:value="uk.co.nickhu.phuzei.presentation.splash.SplashActivity" />
+                android:value="hu.nickx.phuzei.presentation.splash.SplashActivity" />
         </provider>
     </application>
 </manifest>

@@ -36,9 +36,13 @@ class AppPreferences(private val context: Context) {
         get() = preferences.getBoolean(SHUFFLE, false)
         set(value) = preferences.edit { putBoolean(SHUFFLE, value) }
 
-    var category: String
-        get() = preferences.getString(CATEGORY, "") ?: ""
-        set(value) = preferences.edit { putString(CATEGORY, value) }
+    var categoryIndex: Int
+        get() = preferences.getInt(CATEGORY, 0)
+        set(value) = preferences.edit { putInt(CATEGORY, value) }
+
+    var category: String = "All"
+        get() = context.resources.getStringArray(R.array.categories)[categoryIndex]
+        private set
 
     var imagesCount: Int
         get() = preferences.getInt(IMAGES_COUNT, 25)

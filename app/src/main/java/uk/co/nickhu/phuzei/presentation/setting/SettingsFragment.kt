@@ -8,7 +8,6 @@ import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import uk.co.nickhu.phuzei.App
 import uk.co.nickhu.phuzei.MUZEI_PACKAGE_NAME
 import uk.co.nickhu.phuzei.R
@@ -25,8 +24,6 @@ class SettingsFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel: SettingsViewModel by activityViewModels { viewModelFactory }
-
-    private lateinit var adapter: SettingsAdapter
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
@@ -53,7 +50,7 @@ class SettingsFragment : Fragment() {
             val owner = this@SettingsFragment
 
             categoryObservable.observe(owner) {
-                adapter.setCategory(it)
+                binding.categories.setSelection(it)
             }
 
             intentObservable.observe(owner) {
@@ -104,16 +101,15 @@ class SettingsFragment : Fragment() {
         binding.imagesCount.setOnClickListener { binding.imagesCountDescription.performClick() }
         binding.imagesCountDescription.setOnValueChangedListener { _, _, new -> viewModel.onImagesCount(new) }
 
-        setupRecycler(binding.categories)
+        binding.categories.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                viewModel.onSelectCategory(position)
+            }
+        }
 
         viewModel.subscribe()
-    }
-
-    private fun setupRecycler(categories: RecyclerView) {
-        adapter = SettingsAdapter {
-            viewModel.onSelectCategory(it)
-        }
-        categories.adapter = adapter
     }
 
     companion object {

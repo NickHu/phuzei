@@ -22,8 +22,8 @@ class SettingsViewModel @Inject constructor(
     private val _isShuffleObservable = MutableLiveData<Boolean>()
     val isShuffleObservable: LiveData<Boolean> = _isShuffleObservable
 
-    private val _categoryObservable = MutableLiveData<String>()
-    val categoryObservable: LiveData<String> = _categoryObservable
+    private val _categoryObservable = MutableLiveData<Int>()
+    val categoryObservable: LiveData<Int> = _categoryObservable
 
     private val _intentObservable = SingleLiveEvent<Intent>()
     val intentObservable: LiveData<Intent> = _intentObservable
@@ -36,7 +36,7 @@ class SettingsViewModel @Inject constructor(
 
     fun subscribe() {
         _isShuffleObservable.value = prefs.shuffle
-        _categoryObservable.value = prefs.category
+        _categoryObservable.value = prefs.categoryIndex
         _imagesCountObservable.value = prefs.imagesCount
     }
 
@@ -47,10 +47,10 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun onSelectCategory(category: String) {
-        if (category != prefs.category) {
-            prefs.category = category
-            _categoryObservable.value = category
+    fun onSelectCategory(categoryIndex: Int) {
+        if (categoryIndex != prefs.categoryIndex) {
+            prefs.categoryIndex = categoryIndex
+            _categoryObservable.value = prefs.categoryIndex
             _enqueueImages.call()
         }
     }

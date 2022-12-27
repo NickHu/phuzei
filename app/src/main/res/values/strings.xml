@@ -23,4 +23,34 @@
     <string name="images_per_request">Images per request</string>
     <string name="source_not_activated">Phuzei is not activated</string>
     <string name="activate">Activate</string>
+    <string-array name="categories">
+        <item>All</item>
+        <item>Favorites</item>
+        <item>Landscapes</item>
+        <item>Receipts</item>
+        <item>Cityscapes</item>
+        <item>Landmarks</item>
+        <item>Selfies</item>
+        <item>People</item>
+        <item>Pets</item>
+        <item>Weddings</item>
+        <item>Birthdays</item>
+        <item>Documents</item>
+        <item>Travel</item>
+        <item>Animals</item>
+        <item>Food</item>
+        <item>Sport</item>
+        <item>Night</item>
+        <item>Performances</item>
+        <item>Whiteboards</item>
+        <item>Screenshots</item>
+        <item>Utility</item>
+        <item>Arts</item>
+        <item>Crafts</item>
+        <item>Fashion</item>
+        <item>Houses</item>
+        <item>Gardens</item>
+        <item>Flowers</item>
+        <item>Holidays</item>
+    </string-array>
 </resources>

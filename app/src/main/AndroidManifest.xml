@@ -36,7 +36,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
 
                 <data android:scheme="com.alirezaafkar.phuzei" />
-                <data android:scheme="com.alirezaafkar.phuzei.pro" />
             </intent-filter>
         </activity>
 

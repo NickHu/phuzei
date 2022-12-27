@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import com.alirezaafkar.phuzei.App
 import com.alirezaafkar.phuzei.presentation.login.LoginActivity
 import com.alirezaafkar.phuzei.presentation.main.MainActivity

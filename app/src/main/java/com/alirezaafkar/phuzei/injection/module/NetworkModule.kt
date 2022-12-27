@@ -1,17 +1,6 @@
 package com.alirezaafkar.phuzei.injection.module
 
-import com.alirezaafkar.phuzei.API_SCOPE
-import com.alirezaafkar.phuzei.AUTHORIZATION
-import com.alirezaafkar.phuzei.BASE_API_URL
-import com.alirezaafkar.phuzei.BASE_URL
-import com.alirezaafkar.phuzei.BuildConfig
-import com.alirezaafkar.phuzei.CODE
-import com.alirezaafkar.phuzei.KEY_CLIENT_ID
-import com.alirezaafkar.phuzei.KEY_REDIRECT_URI
-import com.alirezaafkar.phuzei.KEY_RESPONSE_TYPE
-import com.alirezaafkar.phuzei.KEY_SCOPE
-import com.alirezaafkar.phuzei.REDIRECT_URI
-import com.alirezaafkar.phuzei.SCHEME
+import com.alirezaafkar.phuzei.*
 import com.alirezaafkar.phuzei.data.api.AlbumsApi
 import com.alirezaafkar.phuzei.data.api.PhotosApi
 import com.alirezaafkar.phuzei.data.api.TokenApi
@@ -123,7 +112,7 @@ class NetworkModule {
             .addQueryParameter(KEY_SCOPE, API_SCOPE)
             .addQueryParameter(KEY_RESPONSE_TYPE, CODE)
             .addQueryParameter(KEY_REDIRECT_URI, REDIRECT_URI)
-            .addQueryParameter(KEY_CLIENT_ID, BuildConfig.CLIENT_ID)
+            .addQueryParameter(KEY_CLIENT_ID, CLIENT_ID)
             .build()
     }
 

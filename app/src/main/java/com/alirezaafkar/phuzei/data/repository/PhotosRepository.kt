@@ -1,12 +1,7 @@
 package com.alirezaafkar.phuzei.data.repository
 
 import com.alirezaafkar.phuzei.data.api.PhotosApi
-import com.alirezaafkar.phuzei.data.model.ContentFilter
-import com.alirezaafkar.phuzei.data.model.FAVORITES
-import com.alirezaafkar.phuzei.data.model.FeatureFilter
-import com.alirezaafkar.phuzei.data.model.Filters
-import com.alirezaafkar.phuzei.data.model.Search
-import com.alirezaafkar.phuzei.data.model.SearchResponse
+import com.alirezaafkar.phuzei.data.model.*
 import com.alirezaafkar.phuzei.util.applyNetworkSchedulers
 import io.reactivex.Single
 import java.util.*

@@ -5,19 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.RecyclerView
 import com.alirezaafkar.phuzei.App
-import com.alirezaafkar.phuzei.BuildConfig
 import com.alirezaafkar.phuzei.MUZEI_PACKAGE_NAME
 import com.alirezaafkar.phuzei.R
 import com.alirezaafkar.phuzei.databinding.FragmentSettingsBinding
 import com.alirezaafkar.phuzei.presentation.muzei.PhotosWorker
-import com.alirezaafkar.phuzei.presentation.pro.ProDialog
 import com.alirezaafkar.phuzei.util.openInPlayStore
 import javax.inject.Inject
 
@@ -97,14 +93,6 @@ class SettingsFragment : Fragment() {
 
         binding.logout.setOnClickListener { viewModel.onLogout() }
         binding.logoutDescription.setOnClickListener { viewModel.onLogout() }
-
-        binding.pro.isVisible = !BuildConfig.IS_PRO
-        binding.proDescription.isVisible = binding.pro.isVisible
-
-        binding.proDescription.setOnClickListener { binding.pro.performClick() }
-        binding.pro.setOnClickListener {
-            ProDialog.show(parentFragmentManager)
-        }
 
         binding.order.setOnCheckedChangeListener { _, id ->
             viewModel.onShuffleOrder(id == R.id.shuffle)

@@ -17,38 +17,10 @@ android {
         versionCode 220
         versionName "2.2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
 
-    Properties properties = new Properties()
-    properties.load(rootProject.file('local.properties').newDataInputStream())
-
-    flavorDimensions "version"
-    productFlavors {
-        free {
-            dimension "version"
-            resValue "string", "app_name", "Phuzei"
-            buildConfigField "boolean", "IS_PRO", "false"
-
-            def client_id = properties.getProperty('client_id_free')
-            buildConfigField 'String', 'CLIENT_ID', "${client_id}"
-
-            def phuzeiAuthorityValue = "com.alirezaafkar.phuzei"
-            manifestPlaceholders = [phuzeiAuthority: phuzeiAuthorityValue]
-            buildConfigField "String", "PHUZEI_AUTHORITY", "\"${phuzeiAuthorityValue}\""
-        }
-        pro {
-            dimension "version"
-            applicationIdSuffix ".pro"
-            resValue "string", "app_name", "Phuzei Pro"
-            buildConfigField "boolean", "IS_PRO", "true"
-
-            def client_id = properties.getProperty('client_id_pro')
-            buildConfigField 'String', 'CLIENT_ID', "${client_id}"
-
-            def phuzeiAuthorityValue = "com.alirezaafkar.phuzei.pro"
-            manifestPlaceholders = [phuzeiAuthority: phuzeiAuthorityValue]
-            buildConfigField "String", "PHUZEI_AUTHORITY", "\"${phuzeiAuthorityValue}\""
-        }
+        def phuzeiAuthorityValue = "com.alirezaafkar.phuzei"
+        manifestPlaceholders = [phuzeiAuthority: phuzeiAuthorityValue]
+        buildConfigField "String", "PHUZEI_AUTHORITY", "\"${phuzeiAuthorityValue}\""
     }
 
     compileOptions {

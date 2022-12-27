@@ -8,12 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
-import com.alirezaafkar.phuzei.App
-import com.alirezaafkar.phuzei.BuildConfig
-import com.alirezaafkar.phuzei.CODE
-import com.alirezaafkar.phuzei.ERROR_CODE
-import com.alirezaafkar.phuzei.R
+import com.alirezaafkar.phuzei.*
 import com.alirezaafkar.phuzei.databinding.ActivityLoginBinding
 import com.alirezaafkar.phuzei.util.toast
 import javax.inject.Inject

@@ -58,11 +58,7 @@ class SettingsFragment : Fragment() {
             }
 
             isShuffleObservable.observe(owner) {
-                if (it) {
-                    binding.shuffle.isChecked = true
-                } else {
-                    binding.sequence.isChecked = true
-                }
+                binding.shuffle.isChecked = it
             }
 
             logoutObservable.observe(owner) {
@@ -94,8 +90,8 @@ class SettingsFragment : Fragment() {
         binding.logout.setOnClickListener { viewModel.onLogout() }
         binding.logoutDescription.setOnClickListener { viewModel.onLogout() }
 
-        binding.order.setOnCheckedChangeListener { _, id ->
-            viewModel.onShuffleOrder(id == R.id.shuffle)
+        binding.shuffle.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.onShuffleOrder(isChecked)
         }
 
         binding.imagesCount.setOnClickListener { binding.imagesCountDescription.performClick() }

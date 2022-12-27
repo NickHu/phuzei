@@ -84,29 +84,14 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:text="@string/order"
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <RadioGroup
-            android:id="@+id/order"
+        <Switch
+            android:id="@+id/shuffle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp">
-
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/sequence"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="@string/sequence" />
-
-            <com.google.android.material.radiobutton.MaterialRadioButton
-                android:id="@+id/shuffle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/shuffle" />
-        </RadioGroup>
+            android:text="@string/shuffle" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="match_parent"

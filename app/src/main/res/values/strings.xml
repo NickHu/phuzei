@@ -23,18 +23,4 @@
     <string name="images_per_request">Images per request</string>
     <string name="source_not_activated">Phuzei is not activated</string>
     <string name="activate">Activate</string>
-
-    <string-array name="images_count">
-        <item>1</item>
-        <item>5</item>
-        <item>10</item>
-        <item>15</item>
-        <item>20</item>
-        <item>25</item>
-        <item>30</item>
-        <item>35</item>
-        <item>40</item>
-        <item>45</item>
-        <item>50</item>
-    </string-array>
 </resources>

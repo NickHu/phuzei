@@ -40,13 +40,9 @@ class AppPreferences(private val context: Context) {
         get() = preferences.getString(CATEGORY, "") ?: ""
         set(value) = preferences.edit { putString(CATEGORY, value) }
 
-    var imagesCountIndex: Int
-        get() = preferences.getInt(IMAGES_COUNT, 1)
+    var imagesCount: Int
+        get() = preferences.getInt(IMAGES_COUNT, 25)
         set(value) = preferences.edit { putInt(IMAGES_COUNT, value) }
-
-    var imagesCount: Int = 1
-        get() = context.resources.getStringArray(R.array.images_count)[imagesCountIndex].toInt()
-        private set
 
     fun logout() {
         preferences.edit {

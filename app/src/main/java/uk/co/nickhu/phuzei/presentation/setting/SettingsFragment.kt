@@ -73,7 +73,10 @@ class SettingsFragment : Fragment() {
             }
 
             imagesCountObservable.observe(owner) {
-                binding.imagesCountDescription.setSelection(it)
+                binding.imagesCountDescription.minValue = 1
+                binding.imagesCountDescription.maxValue = 100
+                binding.imagesCountDescription.wrapSelectorWheel = false
+                binding.imagesCountDescription.value = it
             }
 
             enqueueImages.observe(owner) {
@@ -99,17 +102,7 @@ class SettingsFragment : Fragment() {
         }
 
         binding.imagesCount.setOnClickListener { binding.imagesCountDescription.performClick() }
-        binding.imagesCountDescription.onItemSelectedListener = object :
-            AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                viewModel.onImagesCount(position)
-            }
-
-        }
+        binding.imagesCountDescription.setOnValueChangedListener { _, _, new -> viewModel.onImagesCount(new) }
 
         setupRecycler(binding.categories)
 

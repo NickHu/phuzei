@@ -37,7 +37,7 @@ class SettingsViewModel @Inject constructor(
     fun subscribe() {
         _isShuffleObservable.value = prefs.shuffle
         _categoryObservable.value = prefs.category
-        _imagesCountObservable.value = prefs.imagesCountIndex
+        _imagesCountObservable.value = prefs.imagesCount
     }
 
     fun onShuffleOrder(shuffle: Boolean) {
@@ -55,8 +55,8 @@ class SettingsViewModel @Inject constructor(
         }
     }
 
-    fun onImagesCount(position: Int) {
-        prefs.imagesCountIndex = position
+    fun onImagesCount(count: Int) {
+        prefs.imagesCount = count
     }
 
     fun onContact() {

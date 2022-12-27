@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
-        binding.navigation.setOnNavigationItemSelectedListener {
+        binding.navigation.setOnItemSelectedListener {
             val fragment = when (it.itemId) {
                 R.id.action_settings -> SettingsFragment.newInstance()
                 R.id.action_shared_albums -> AlbumFragment.newInstance(AlbumFragment.TYPE_SHARED_ALBUMS)

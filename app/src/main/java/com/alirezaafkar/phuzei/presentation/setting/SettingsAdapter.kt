@@ -14,6 +14,8 @@ class SettingsAdapter(
     private val listener: (String) -> Unit
 ) : RecyclerView.Adapter<SettingsAdapter.ViewHolder>() {
 
+    inner class ViewHolder(val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root)
+
     private var category = ""
     private val items = listOf(
         "All",
@@ -47,25 +49,20 @@ class SettingsAdapter(
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_category, parent, false)
-        return ViewHolder(view)
+        val binding = ItemCategoryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(items[position]) {
-            holder.bind(this, this == category, listener)
-        }
-    }
-
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(item: String, selected: Boolean, listener: (String) -> Unit) {
-            (itemView as MaterialRadioButton).run {
-                text = item
-                isChecked = selected
-                setOnClickListener { listener(item) }
+        with(holder) {
+            with(items[position]) {
+                binding.root.run {
+                    text = this@with
+                    isChecked = this@with == category
+                    setOnClickListener { listener(this@with) }
+                }
             }
         }
     }

@@ -8,11 +8,13 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.alirezaafkar.phuzei.App
 import com.alirezaafkar.phuzei.BuildConfig
 import com.alirezaafkar.phuzei.MUZEI_PACKAGE_NAME
 import com.alirezaafkar.phuzei.R
+import com.alirezaafkar.phuzei.databinding.FragmentAlbumsBinding
 import com.alirezaafkar.phuzei.presentation.main.AlbumAdapter
 import com.alirezaafkar.phuzei.presentation.muzei.PhotosWorker
 import com.alirezaafkar.phuzei.util.InfiniteScrollListener
@@ -21,7 +23,6 @@ import com.alirezaafkar.phuzei.util.openInPlayStore
 import com.alirezaafkar.phuzei.util.toast
 import com.google.android.apps.muzei.api.MuzeiContract
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_albums.*
 import javax.inject.Inject
 
 /**
@@ -35,6 +36,9 @@ class AlbumFragment : Fragment() {
 
     private lateinit var adapter: AlbumAdapter
 
+    private var _binding: FragmentAlbumsBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         App.get(requireContext()).component?.inject(this)
 
@@ -44,9 +48,9 @@ class AlbumFragment : Fragment() {
             val owner = this@AlbumFragment
             selectAlbumObservable.observe(owner) {
                 if (isPhuzeiSelected()) {
-                    showExitSnackBar(it)
+                    showExitSnackBar(binding.swipe, it)
                 } else {
-                    showActivateSnackBar()
+                    showActivateSnackBar(binding.swipe)
                 }
             }
 
@@ -57,7 +61,7 @@ class AlbumFragment : Fragment() {
             }
 
             loadingObservable.observe(owner) {
-                swipe.isRefreshing = it
+                binding.swipe.isRefreshing = it
             }
 
             errorObservable.observe(owner) {
@@ -75,17 +79,23 @@ class AlbumFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return layoutInflater.inflate(R.layout.fragment_albums, container, false)
+        _binding = FragmentAlbumsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        swipe.setOnRefreshListener { refresh() }
-        setupRecycler()
+        binding.swipe.setOnRefreshListener { refresh() }
+        setupRecycler(binding.recyclerView)
         viewModel.subscribe(arguments?.getInt(KEY_TYPE, TYPE_ALBUMS) ?: TYPE_ALBUMS)
     }
 
-    private fun setupRecycler() {
+    private fun setupRecycler(recyclerView: RecyclerView) {
         adapter = AlbumAdapter(viewModel.currentAlbum) {
             viewModel.onSelectAlbum(it)
             adapter.setAlbum(it.id)
@@ -109,7 +119,7 @@ class AlbumFragment : Fragment() {
         )
     }
 
-    private fun showActivateSnackBar() {
+    private fun showActivateSnackBar(swipe: SwipeRefreshLayout) {
         Snackbar.make(
             swipe,
             R.string.source_not_activated,
@@ -124,7 +134,7 @@ class AlbumFragment : Fragment() {
         }.show()
     }
 
-    private fun showExitSnackBar(title: String) {
+    private fun showExitSnackBar(swipe: SwipeRefreshLayout, title: String) {
         Snackbar.make(
             swipe,
             getString(R.string.selected_album_, title),

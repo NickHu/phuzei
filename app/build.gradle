@@ -2,10 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 33
+
+    buildFeatures {
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "com.alirezaafkar.phuzei"
@@ -70,6 +73,7 @@ android {
             proguardFile "$project.rootDir/app/proguard/app.pro"
         }
     }
+    namespace 'com.alirezaafkar.phuzei'
 }
 
 ext {

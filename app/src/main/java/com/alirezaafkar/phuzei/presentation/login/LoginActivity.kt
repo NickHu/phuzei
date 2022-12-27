@@ -14,8 +14,8 @@ import com.alirezaafkar.phuzei.BuildConfig
 import com.alirezaafkar.phuzei.CODE
 import com.alirezaafkar.phuzei.ERROR_CODE
 import com.alirezaafkar.phuzei.R
+import com.alirezaafkar.phuzei.databinding.ActivityLoginBinding
 import com.alirezaafkar.phuzei.util.toast
-import kotlinx.android.synthetic.main.activity_login.*
 import javax.inject.Inject
 
 /**
@@ -31,10 +31,11 @@ class LoginActivity : AppCompatActivity() {
         App.get(this).component?.inject(this)
 
         super.onCreate(savedInstanceState)
+        val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_login)
 
-        setSupportActionBar(toolbar)
-        signIn.setOnClickListener { viewModel.onSignIn() }
+        setSupportActionBar(binding.toolbar)
+        binding.signIn.setOnClickListener { viewModel.onSignIn() }
 
         with(viewModel) {
             val owner = this@LoginActivity
@@ -44,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             loadingObservable.observe(owner) {
-                progressBar.isVisible = it
+                binding.progressBar.isVisible = it
             }
 
             errorObservable.observe(owner) {
@@ -55,6 +56,8 @@ class LoginActivity : AppCompatActivity() {
                 App.restart(this@LoginActivity)
             }
         }
+
+        setContentView(binding.root)
     }
 
     override fun onNewIntent(intent: Intent?) {

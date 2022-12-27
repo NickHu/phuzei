@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import com.alirezaafkar.phuzei.PRO_PACKAGE_NAME
 import com.alirezaafkar.phuzei.R
+import com.alirezaafkar.phuzei.databinding.FragmentProBinding
 import com.alirezaafkar.phuzei.util.openInPlayStore
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import kotlinx.android.synthetic.main.fragment_pro.*
 
 /**
  * Created by Alireza Afkar on 5/28/20.
@@ -26,8 +26,9 @@ class ProDialog : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentProBinding.inflate(layoutInflater)
 
-        install.setOnClickListener {
+        binding.install.setOnClickListener {
             openInPlayStore(PRO_PACKAGE_NAME)
         }
     }

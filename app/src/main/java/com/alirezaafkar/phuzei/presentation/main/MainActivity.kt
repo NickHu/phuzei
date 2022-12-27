@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.alirezaafkar.phuzei.App
 import com.alirezaafkar.phuzei.R
+import com.alirezaafkar.phuzei.databinding.ActivityMainBinding
 import com.alirezaafkar.phuzei.presentation.album.AlbumFragment
 import com.alirezaafkar.phuzei.presentation.setting.SettingsFragment
-import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by Alireza Afkar on 16/9/2018AD.
@@ -19,10 +19,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         App.get(this).component?.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
 
-        navigation.setOnNavigationItemSelectedListener {
+        binding.navigation.setOnNavigationItemSelectedListener {
             val fragment = when (it.itemId) {
                 R.id.action_settings -> SettingsFragment.newInstance()
                 R.id.action_shared_albums -> AlbumFragment.newInstance(AlbumFragment.TYPE_SHARED_ALBUMS)
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             replaceFragment(fragment)
             true
         }
-        navigation.selectedItemId = R.id.action_albums
+        binding.navigation.selectedItemId = R.id.action_albums
     }
 
     private fun replaceFragment(fragment: Fragment) {

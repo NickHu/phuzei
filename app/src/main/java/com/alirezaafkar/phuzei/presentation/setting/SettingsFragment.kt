@@ -10,14 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.RecyclerView
 import com.alirezaafkar.phuzei.App
 import com.alirezaafkar.phuzei.BuildConfig
 import com.alirezaafkar.phuzei.MUZEI_PACKAGE_NAME
 import com.alirezaafkar.phuzei.R
+import com.alirezaafkar.phuzei.databinding.FragmentSettingsBinding
 import com.alirezaafkar.phuzei.presentation.muzei.PhotosWorker
 import com.alirezaafkar.phuzei.presentation.pro.ProDialog
 import com.alirezaafkar.phuzei.util.openInPlayStore
-import kotlinx.android.synthetic.main.fragment_settings.*
 import javax.inject.Inject
 
 /**
@@ -31,12 +32,21 @@ class SettingsFragment : Fragment() {
 
     private lateinit var adapter: SettingsAdapter
 
+    private var _binding: FragmentSettingsBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return layoutInflater.inflate(R.layout.fragment_settings, container, false)
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,9 +66,9 @@ class SettingsFragment : Fragment() {
 
             isShuffleObservable.observe(owner) {
                 if (it) {
-                    shuffle.isChecked = true
+                    binding.shuffle.isChecked = true
                 } else {
-                    sequence.isChecked = true
+                    binding.sequence.isChecked = true
                 }
             }
 
@@ -67,7 +77,7 @@ class SettingsFragment : Fragment() {
             }
 
             imagesCountObservable.observe(owner) {
-                imagesCountDescription.setSelection(it)
+                binding.imagesCountDescription.setSelection(it)
             }
 
             enqueueImages.observe(owner) {
@@ -79,29 +89,29 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        contact.setOnClickListener { viewModel.onContact() }
-        contactDescription.setOnClickListener { viewModel.onContact() }
+        binding.contact.setOnClickListener { viewModel.onContact() }
+        binding.contactDescription.setOnClickListener { viewModel.onContact() }
 
-        muzei.setOnClickListener { openInPlayStore(MUZEI_PACKAGE_NAME) }
-        muzeiDescription.setOnClickListener { muzei.performClick() }
+        binding.muzei.setOnClickListener { openInPlayStore(MUZEI_PACKAGE_NAME) }
+        binding.muzeiDescription.setOnClickListener { binding.muzei.performClick() }
 
-        logout.setOnClickListener { viewModel.onLogout() }
-        logoutDescription.setOnClickListener { viewModel.onLogout() }
+        binding.logout.setOnClickListener { viewModel.onLogout() }
+        binding.logoutDescription.setOnClickListener { viewModel.onLogout() }
 
-        pro.isVisible = !BuildConfig.IS_PRO
-        proDescription.isVisible = pro.isVisible
+        binding.pro.isVisible = !BuildConfig.IS_PRO
+        binding.proDescription.isVisible = binding.pro.isVisible
 
-        proDescription.setOnClickListener { pro.performClick() }
-        pro.setOnClickListener {
+        binding.proDescription.setOnClickListener { binding.pro.performClick() }
+        binding.pro.setOnClickListener {
             ProDialog.show(parentFragmentManager)
         }
 
-        order.setOnCheckedChangeListener { _, id ->
+        binding.order.setOnCheckedChangeListener { _, id ->
             viewModel.onShuffleOrder(id == R.id.shuffle)
         }
 
-        imagesCount.setOnClickListener { imagesCountDescription.performClick() }
-        imagesCountDescription.onItemSelectedListener = object :
+        binding.imagesCount.setOnClickListener { binding.imagesCountDescription.performClick() }
+        binding.imagesCountDescription.onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
 
@@ -113,12 +123,12 @@ class SettingsFragment : Fragment() {
 
         }
 
-        setupRecycler()
+        setupRecycler(binding.categories)
 
         viewModel.subscribe()
     }
 
-    private fun setupRecycler() {
+    private fun setupRecycler(categories: RecyclerView) {
         adapter = SettingsAdapter {
             viewModel.onSelectCategory(it)
         }

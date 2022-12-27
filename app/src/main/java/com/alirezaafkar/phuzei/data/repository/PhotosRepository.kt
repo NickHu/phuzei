@@ -69,7 +69,7 @@ class PhotosRepository @Inject constructor(private var api: PhotosApi) {
             val filter = if (category.equals(FAVORITES, true)) {
                 Filters(featureFilter = FeatureFilter(listOf(FAVORITES)))
             } else {
-                Filters(contentFilter = ContentFilter(listOf(category.toUpperCase(Locale.US))))
+                Filters(contentFilter = ContentFilter(listOf(category.uppercase(Locale.US))))
             }
             search.copy(filters = filter)
         } else {

@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.alirezaafkar.phuzei.R
 import com.alirezaafkar.phuzei.data.model.Album
+import com.alirezaafkar.phuzei.databinding.ItemAlbumBinding
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.item_album.view.*
 
 /**
  * Created by Alireza Afkar on 16/9/2018AD.
@@ -19,40 +19,37 @@ class AlbumAdapter(
     private val listener: (Album) -> Unit
 ) : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
 
+    inner class ViewHolder(val binding: ItemAlbumBinding) : RecyclerView.ViewHolder(binding.root)
+
     private var items = mutableListOf<Album>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_album, parent, false)
-        return ViewHolder(view)
+        val binding = ItemAlbumBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount() = items.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        with(items[position]) {
-            holder.bind(this, this.id == album, listener)
-        }
-    }
+        with(holder) {
+            with(items[position]) {
+                binding.name.text = this.title
+                binding.tick.isVisible = this.id == album
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(item: Album, selected: Boolean, listener: (Album) -> Unit) = with(itemView) {
-            name.text = item.title
-            tick.isVisible = selected
+                val layoutParams = binding.root.layoutParams as StaggeredGridLayoutManager.LayoutParams
 
-            val layoutParams = layoutParams as StaggeredGridLayoutManager.LayoutParams
+                binding.count.text = if (this.id.isEmpty()) {
+                    Picasso.get().load(R.drawable.tehran).into(binding.image)
+                    layoutParams.isFullSpan = true
+                    binding.root.context.getString(R.string.category_description)
+                } else {
+                    Picasso.get().load(this.coverPhotoUrl).into(binding.image)
+                    layoutParams.isFullSpan = false
+                    binding.root.context.getString(R.string.items_count, this.itemsCount)
+                }
 
-            count.text = if (item.id.isEmpty()) {
-                Picasso.get().load(R.drawable.tehran).into(image)
-                layoutParams.isFullSpan = true
-                this.context.getString(R.string.category_description)
-            } else {
-                Picasso.get().load(item.coverPhotoUrl).into(image)
-                layoutParams.isFullSpan = false
-                this.context.getString(R.string.items_count, item.itemsCount)
+                binding.root.setOnClickListener { listener(this) }
             }
-
-            setOnClickListener { listener(item) }
         }
     }
 

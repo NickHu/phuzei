@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:src="@drawable/ic_done"
-            android:tint="@color/colorAccent"
+            app:tint="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image"
